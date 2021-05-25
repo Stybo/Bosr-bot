@@ -57,7 +57,21 @@ client.on("guildMemberAdd", member => {
 
     channel.send(joinEmbed);
 
-    // channel.send(`Welkom bij de server ${member}`);
+    var joinEmbed1 = new discord.MessageEmbed()
+        .setColor('#0d0041')
+        .setTitle(`Welkom ${member.user.username}`)
+        .setDescription(`Welkom in de Bosr Discord server. \n\n Om er voor te zorgen dat jouw ervaring op de server optimaal is, moet je de regels nog even doorlezen. \n\n Als je dat hebt gedaan kun je jezelf verifiëren door op het ✅ te klikken, en dan ben je klaar om te gaan!!`)
+        .setThumbnail(member.user.displayAvatarURL())
+        .setFooter("Bosr")
+        .setTimestamp();
+
+    member.send(joinEmbed1)
+
+    try {
+        member.send();
+    } catch (e) {
+        return;
+    }
 
 })
 
