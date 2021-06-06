@@ -1,5 +1,5 @@
 const discord = require("discord.js");
-const pagination = require(`discord.js-pagination`)
+// const pagination = require(`discord.js-pagination`)
 
 module.exports.run = async (bot, message, args) => {
 
