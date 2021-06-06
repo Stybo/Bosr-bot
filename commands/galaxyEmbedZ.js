@@ -17,6 +17,7 @@ module.exports.run = async (bot, message, args) => {
         Machinewasbaar (koud)`)
         .setColor("#0d0041")
         .setImage('https://cdn.discordapp.com/attachments/841371133264658474/851042458020216842/Galaxy_illustration_zwart_webshop.png')
+        .addField("Link", "[Galxy Muismat (Zwart)](https://bosr.nl/product/galaxy-muismat-zwart/)")
 
     return message.channel.send(botEmbed);
 }
