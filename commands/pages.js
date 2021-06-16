@@ -4,7 +4,7 @@ const discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
     const page1 = new discord.MessageEmbed()
-    .setTitle(`Pagina 1`)
+    .setTitle(`Info`)
     .setDescription(`voobeeld voor pagina 1`)
 
     const page2 = new discord.MessageEmbed()
