@@ -113,52 +113,17 @@ client.on("message", async message => {
 
     }
 
+    var ID = "846451841877147729"
+    var ID1 = "841674068532396122"
+
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
 
-    // var sentenceUser = "";
-    // var amountSwearWords = 0;
-
-    // for (let y = 0; y < messageArray.length; y++) {
-       
-    //     const word = messageArray[y].toLowerCase();
-
-    //     var changeWord = "";
-
-    //     for (let i = 0; i < swearWords["vloekwoorden"].length; i++) {
-
-    //         if (word.includes(swearWords["vloekwoorden"][i])) {
-
-    //             changeWord = word.replace(swearWords["vloekwoorden"][i], "******");
-
-    //             sentenceUser += " " + changeWord;
-
-    //             amountSwearWords++;
-                
-    //         }
-
-    //     }
-
-    //     if(!changeWord){
-    //         sentenceUser+= " " + messageArray[y];
-    //     }        
-
-        
-    // }
-
-    // if(amountSwearWords != 0){
-
-    //     message.delete();
-    //     message.channel.send(sentenceUser)
-
-
-
-    // }
-
-
-
     var command = messageArray[0];
+
+    if (message.channel.id == ID) message.delete({ timeout: 5000 }); 
+    if (message.channel.id == ID1) message.delete({ timeout: 5000 }); 
 
     if (!message.content.startsWith(prefix)) return;
 
