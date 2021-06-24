@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
 
     var embed3 = new discord.MessageEmbed()
         .setColor('#0d0041')
-        .setDescription(`${message.author} ✅ Je hebt succes vol een review geschreven`);
+        .setDescription(`${message.author} ✅ Je hebt succesvol een review geschreven`);
     
     message.channel.send(embed3).then(msg => msg.delete({ timeout: 5000 }));
 
