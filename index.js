@@ -152,7 +152,7 @@ client.on("messageDelete", messageDeleted => {
         .setFooter("© Bosr")
         .setTimestamp();
 
-    var respone = `Bericht ID:(${messageDeleted.id}) is verwijderd uit ${messageDeleted.channel}\n **Bericht**: ${content}`;
+    var respone = `Er is een bericht verwijderd uit ${messageDeleted.channel}\n \n **Bericht**: ${content}`;
 
     var MessageDeletedEmbed1 = new discord.MessageEmbed()
         .setAuthor(`${messageDeleted.author.tag}    ID: ${messageDeleted.author.id}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)
@@ -161,4 +161,18 @@ client.on("messageDelete", messageDeleted => {
         .setColor('#0d0041');
 
     client.channels.cache.find(c => c.name == "log").send(MessageDeletedEmbed1);
+});
+
+client.on("messageUpdate", async(oldMessage, newMessage) => {
+    var respone = `Er is een bericht bewerkt in ${oldMessage.channel}\n \n **Oud bericht**: ${oldMessage}\n**Nieuw bericht**: ${newMessage}`
+
+    var logChannel = client.channels.cache.get("841591393981562891")
+
+    var editEmbed = new discord.MessageEmbed()
+        .setAuthor(`${oldMessage.author.tag}    ID: ${oldMessage.author.id}`, `${oldMessage.author.avatarURL({ size: 4096 })}`)
+        .setTitle("Bewerkt bericht")
+        .setDescription(respone)
+        .setTimestamp()
+        .setColor('#0d0041');
+    logChannel.send(editEmbed);
 });
