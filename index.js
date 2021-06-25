@@ -115,6 +115,7 @@ client.on("message", async message => {
 
     var ID = "846451841877147729"
     var ID1 = "841674068532396122"
+    var ID2 = "841599442893275138"
 
     var prefix = botConfig.prefix;
 
@@ -122,8 +123,9 @@ client.on("message", async message => {
 
     var command = messageArray[0];
 
-    if (message.channel.id == ID) message.delete({ timeout: 5000 }); 
-    if (message.channel.id == ID1) message.delete({ timeout: 5000 }); 
+    if (message.channel.id == ID) message.delete({ timeout: 5000 });
+    if (message.channel.id == ID1) message.delete({ timeout: 5000 });
+    if (message.channel.id == ID2) message.delete({ timeout: 5000 });
 
     if (!message.content.startsWith(prefix)) return;
 
@@ -134,4 +136,29 @@ client.on("message", async message => {
 
     if (commands) commands.run(client, message, arguments);
 
+});
+
+client.on("messageDelete", messageDeleted => {
+
+    if (messageDeleted.author.bot) return;
+
+    var content = messageDeleted.content;
+    if (!content) content = "Geen tekst te vinden";
+    //(MessageDeletedEmbed)
+
+    var MessageDeletedEmbed = new discord.MessageEmbed()
+        .setColor('#0d0041')
+        .setDescription(`Geen tekst te vinden`)
+        .setFooter("© Bosr")
+        .setTimestamp();
+
+    var respone = `Bericht ID:(${messageDeleted.id}) is verwijderd uit ${messageDeleted.channel}\n **Bericht**: ${content}`;
+
+    var MessageDeletedEmbed1 = new discord.MessageEmbed()
+        .setAuthor(`${messageDeleted.author.tag}    ID: ${messageDeleted.author.id}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)
+        .setDescription(respone)
+        .setTimestamp()
+        .setColor('#0d0041');
+
+    client.channels.cache.find(c => c.name == "log").send(MessageDeletedEmbed1);
 });
