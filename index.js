@@ -139,6 +139,7 @@ client.on("message", async message => {
 });
 
 client.on("messageDelete", messageDeleted => {
+    var logChannel = client.channels.cache.get("841591393981562891")
 
     if (messageDeleted.author.bot) return;
 
@@ -156,11 +157,12 @@ client.on("messageDelete", messageDeleted => {
 
     var MessageDeletedEmbed1 = new discord.MessageEmbed()
         .setAuthor(`${messageDeleted.author.tag}    ID: ${messageDeleted.author.id}`, `${messageDeleted.author.avatarURL({ size: 4096 })}`)
+        .setTitle("Verwijderd bericht")
         .setDescription(respone)
         .setTimestamp()
         .setColor('#0d0041');
 
-    client.channels.cache.find(c => c.name == "log").send(MessageDeletedEmbed1);
+    logChannel.send(MessageDeletedEmbed1);
 });
 
 client.on("messageUpdate", async(oldMessage, newMessage) => {
