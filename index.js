@@ -116,6 +116,7 @@ client.on("message", async message => {
     var ID = "846451841877147729"
     var ID1 = "841674068532396122"
     var ID2 = "841599442893275138"
+    var ID3 = "841674068532396122"
 
     var prefix = botConfig.prefix;
 
@@ -126,6 +127,7 @@ client.on("message", async message => {
     if (message.channel.id == ID) message.delete({ timeout: 5000 });
     if (message.channel.id == ID1) message.delete({ timeout: 5000 });
     if (message.channel.id == ID2) message.delete({ timeout: 5000 });
+    if (message.channel.id == ID3) message.delete({ timeout: 5000 });
 
     if (!message.content.startsWith(prefix)) return;
 
