@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor('#0d0041')
         .setDescription(`${message.author} Support kanaal wordt aangemaakt`);
 
-    message.channel.send(embed1)
+    message.channel.send(embed1).then(msg => msg.delete({ timeout: 5000 }));
 
     message.guild.channels.create("🎫・" + userName.toLowerCase() + "-" + userDiscriminator, { type: 'text' }).then(
         (createdChannel) => {
@@ -71,14 +71,14 @@ module.exports.run = async (bot, message, args) => {
                 var embed2 = new discord.MessageEmbed()
                     .setColor('#0d0041')
                     .setDescription(`${message.author} Er is iets fout gegaan`);
-                message.channel.send(embed2);
+                message.channel.send(embed2).then(msg => msg.delete({ timeout: 5000 }));
             });
         }
     ).catch(err => {
         var embed2 = new discord.MessageEmbed()
             .setColor('#0d0041')
             .setDescription(`${message.author} Er is iets fout gegaan`);
-        message.channel.send(embed2);
+        message.channel.send(embed2).then(msg => msg.delete({ timeout: 5000 }));
     });
 
 }
