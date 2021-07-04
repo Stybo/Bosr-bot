@@ -75,7 +75,29 @@ client.on("guildMemberAdd", member => {
 
 })
 
+client.on("guildMemberRemove", member => {
 
+    // channel.send(`Welkom bij de server ${member}`);
+
+    var channel = member.guild.channels.cache.get('841591393981562891');
+
+    if (!channel) return;
+
+    var memberCount = member.guild.memberCount;
+
+    var leaveEmbed = new discord.MessageEmbed()
+        .setColor('#0d0041')
+        .setTitle(`Tot ziens ${member.user.username}`)
+        .setDescription(`Tot ziens.
+        We zijn nu met ${memberCount} Members.`)
+        .setThumbnail(member.user.displayAvatarURL())
+        .setFooter("© Bosr")
+        .setTimestamp();
+
+    channel.send(leaveEmbed);
+
+
+})
 
 client.on("ready", async () => {
 
